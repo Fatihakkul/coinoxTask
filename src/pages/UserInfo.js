@@ -32,28 +32,28 @@ const UserInfo = (props) => {
                         <Text style={styles.name}>User Info</Text>
                     </View>
                     <View style={styles.userInfo}>
-                        <Text style={styles.name}>Name: <Text style={[styles.name, { color: Color.settinText }]}> {user.name}</Text></Text>
-                        <Text style={styles.name}>Email: <Text style={[styles.name, { color: Color.settinText }]}>{user.email}</Text> </Text>
-                        <Text style={styles.name}>Phone: <Text style={[styles.name, { color: Color.settinText }]}> {user.phone}</Text></Text>
-                        <Text style={styles.name}>Website: <Text style={[styles.name, { color: Color.settinText }]}> {user.website}</Text></Text>
+                        <Text style={styles.name}>Name: <Text style={[styles.name, { color: Color.title_color }]}> {user.name}</Text></Text>
+                        <Text style={styles.name}>Email: <Text style={[styles.name, { color: Color.title_color }]}>{user.email}</Text> </Text>
+                        <Text style={styles.name}>Phone: <Text style={[styles.name, { color: Color.title_color }]}> {user.phone}</Text></Text>
+                        <Text style={styles.name}>Website: <Text style={[styles.name, { color: Color.title_color }]}> {user.website}</Text></Text>
                     </View>
 
                     <View style={styles.title}>
                         <Text style={styles.name}>User Adress</Text>
                     </View>
                     <View style={styles.userInfo}>
-                        <Text style={styles.name}>City: <Text style={[styles.name, { color: Color.settinText }]}> {user.address.city}</Text></Text>
-                        <Text style={styles.name}>Street: <Text style={[styles.name, { color: Color.settinText }]}>{user.address.street}</Text> </Text>
-                        <Text style={styles.name}>Suite: <Text style={[styles.name, { color: Color.settinText }]}> {user.address.suite}</Text></Text>
-                        <Text style={styles.name}>Zipcode: <Text style={[styles.name, { color: Color.settinText }]}> {user.address.zipcode}</Text></Text>
+                        <Text style={styles.name}>City: <Text style={[styles.name, { color: Color.title_color }]}> {user.address.city}</Text></Text>
+                        <Text style={styles.name}>Street: <Text style={[styles.name, { color: Color.title_color }]}>{user.address.street}</Text> </Text>
+                        <Text style={styles.name}>Suite: <Text style={[styles.name, { color: Color.title_color }]}> {user.address.suite}</Text></Text>
+                        <Text style={styles.name}>Zipcode: <Text style={[styles.name, { color: Color.title_color }]}> {user.address.zipcode}</Text></Text>
                     </View>
                     <View style={styles.title}>
                         <Text style={styles.name}>User Company Info</Text>
                     </View>
                     <View style={styles.userInfo}>
-                        <Text style={styles.name}>BS: <Text style={[styles.name, { color: Color.settinText }]}> {user.company.bs}</Text></Text>
-                        <Text style={styles.name}>Catch Phrase: <Text style={[styles.name, { color: Color.settinText }]}>{user.company.catchPhrase}</Text> </Text>
-                        <Text style={styles.name}>Name: <Text style={[styles.name, { color: Color.settinText }]}> {user.company.name}</Text></Text>
+                        <Text style={styles.name}>BS: <Text style={[styles.name, { color: Color.title_color }]}> {user.company.bs}</Text></Text>
+                        <Text style={styles.name}>Catch Phrase: <Text style={[styles.name, { color: Color.title_color }]}>{user.company.catchPhrase}</Text> </Text>
+                        <Text style={styles.name}>Name: <Text style={[styles.name, { color: Color.title_color }]}> {user.company.name}</Text></Text>
 
                     </View>
                 </ScrollView>
@@ -67,11 +67,11 @@ const UserInfo = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
+        backgroundColor : Color.background_black
     },
     header: {
         flex: 2,
-        backgroundColor: Color.white,
+        backgroundColor: Color.settinText,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         alignItems: "center",
@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: "bold",
         letterSpacing: 1,
-        marginTop: 10
+        marginTop: 10,
+        color :  Color.title_color
     },
     content: {
         flex: 5,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     userInfo: {
         width: width * 0.95,
         padding: 10,
-        backgroundColor: Color.white,
+        backgroundColor: Color.settinText,
         borderRadius: 15
     },
     title: {

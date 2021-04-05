@@ -13,6 +13,7 @@ import Icon from "react-native-vector-icons/Ionicons"
 const { width, height } = Dimensions.get("window")
 
 const UserListItem = (props) => {
+    
     return (
         <View style={styles.container}>
             <View style={styles.info}>
@@ -20,12 +21,12 @@ const UserListItem = (props) => {
                     <Image style={{ width: 60, height: 60, borderRadius: 30, resizeMode: "contain" }} source={{ uri: "https://picsum.photos/200" }} />
                 </View>
                 <View>
-                    <Text>{props.data.name}</Text>
-                    <Text>{props.data.email}</Text>
+                    <Text style={[styles.text,{fontWeight:"bold"}]}>{props.data.name}</Text>
+                    <Text style={[styles.text,{fontWeight : "600"}]}>{props.data.email}</Text>
                 </View>
             </View>
             <TouchableOpacity onPress={props.onPress}>
-                <Icon  name="chevron-forward-outline" size={25} color={Color.primary} />
+                <Icon  name="chevron-forward-outline" size={25} color={Color.title_color} />
             </TouchableOpacity>
          </View>
     )
@@ -35,9 +36,9 @@ const styles = StyleSheet.create({
     container: {
         width: width * 0.95,
         height: 80,
-        backgroundColor: Color.white,
+        backgroundColor: "#242424",
         borderRadius: 30,
-        marginVertical: 15,
+        marginVertical: 7,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -53,6 +54,11 @@ const styles = StyleSheet.create({
     info : {
         alignItems :"center",
         flexDirection:"row"
+    },
+    text : {
+        color : Color.title_color,
+        letterSpacing:1,
+        fontSize:12
     }
 })
 export { UserListItem }

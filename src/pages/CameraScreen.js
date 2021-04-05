@@ -71,9 +71,12 @@ const CameraScreen = (props) => {
                         <Icon name="sync-circle-outline"  size={55} color={Color.white}  onPress={()=>switchCamera()} />
                     </View>
                     <View style={styles.footer}>
-                        <View style={styles.image}>
-                            <Image style={{ width: 60, height: 60, resizeMode: "cover", borderRadius: 30 }} source={{ uri: imageRef }} />
-                        </View>
+                        <TouchableOpacity>
+                            <View style={styles.image}>
+                                <Image style={{ width: 60, height: 60, resizeMode: "cover", borderRadius: 30 }} source={{ uri: imageRef }} />
+                            </View>
+                        </TouchableOpacity>
+                       
                         <TouchableOpacity
                             style={styles.takePicButton}
                             onPress={() => takePicture()}

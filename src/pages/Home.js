@@ -37,13 +37,12 @@ const Home = (props) => {
     const getUsers = async () => {
 
         let response = await Axios.get(API.base_url)
-        console.log(response)
+     
         if (response.data.length > 0) {
             setSearchUserList(response.data)
             setUserList(response.data)
         } else {
-            console.log(response.data)
-            Alert.alert("Error", "Bir hata oluştur")
+            Alert.alert("Error", "Something went wrong")
         }
     }
 
@@ -55,7 +54,7 @@ const Home = (props) => {
             const search = e.toUpperCase()
             return itemData.indexOf(search) > -1
         })
-        console.log(arr)
+       
         setUserList(arr)
         setFilterString(e)
     }
@@ -66,7 +65,7 @@ const Home = (props) => {
 
     return (
         <View style={styles.container}>
-            {/* Burada name obje olarak gönderiyorum çünkü ilkel veri tipinin değişmesi componenti güncellemiyor */}
+            {/* Burada name obje olarak gönderiyorum çünkü ilkel veri tipinin değişmesi componenti güncellemeyebilir */}
             <SearchBar name={filter} value={filterString} placeholder={`Search user with ${filter.name === "mail" ? "email" : "name"} `} onChangeText={(e)=>filterList(e)} selectFilter={()=>setFilter(filter.name === "mail" ?{ name:"mail-outline"} : {name : "mail"} )}/>
             <View style={styles.content}>
                 <FlatList
@@ -74,6 +73,7 @@ const Home = (props) => {
                     data={userList}
                     renderItem={renderList}
                     showsVerticalScrollIndicator={false}
+                    
                 />
             </View>
         </View>
@@ -84,12 +84,13 @@ const Home = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor :Color.background_black
     },
     content :{
         alignItems:"center",
         flex :1,
-       
+       paddingTop:14
     }
 })
 export { Home }

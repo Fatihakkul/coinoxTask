@@ -20,8 +20,9 @@ const CodeScreen = (props) => {
 
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0]
     const numColumns = 3;
+    const user = props.route.params.user
     const [code, setCode] = useState('')
-
+   
 
 
     function setValue(e) {
@@ -37,11 +38,11 @@ const CodeScreen = (props) => {
         setCode(newArr.join(''))
     }
 
-    const goHome =()=>{
-        if(code === "1234"){
+    const goHome = () => {
+        if (code === user.pincode) {
             props.navigation.navigate('home')
-        }else 
-            Alert.alert("Geçersiz Pincode" , "Lütfen tekrar deneyiniz" )
+        } else
+            Alert.alert("Invalid Pincode", "Please try again")
     }
 
     const renderList = ({ item }) => {
@@ -50,9 +51,8 @@ const CodeScreen = (props) => {
 
                 <TouchableOpacity onPress={deleteLastNumber} >
                     <View style={[styles.listItem]}>
-                        <Icon name="arrow-back-outline" size={25} color={Color.white} />
+                        <Icon name="arrow-back-outline" size={25} color={Color.title_color} />
                     </View>
-
                 </TouchableOpacity>
 
             )
@@ -75,7 +75,7 @@ const CodeScreen = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Icon name="chevron-back-outline" size={35} color="white" />
+                <Icon name="chevron-back-outline" size={35} color={Color.title_color} />
             </View>
             <View style={styles.titleContainer}>
                 <Text style={styles.text}>Enter pin-code</Text>
@@ -103,19 +103,19 @@ const CodeScreen = (props) => {
                     value={code}
                     onTextChange={code => setCode(code)}
                 />
-                <View style={styles.inputContainer}>
+                <View style={[styles.inputContainer,{flex: 1,paddingTop:80}]}>
                     <FlatList
                         keyExtractor={(_, index) => index.toString()}
                         data={[...data, { lastitem: true }]}
                         renderItem={renderList}
                         numColumns={numColumns}
                         contentContainerStyle={{ alignSelf: "center", marginTop: 40 }}
-
+                        scrollEnabled={false}
                     />
-                    <View style={styles.inputContainer}>
+                    <View style={[styles.inputContainer,{marginBottom:60}]}>
                         <TouchableOpacity onPress={goHome}>
-                            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#ae5fed', '#9638e0', '#7300cf']} style={styles.button}>
-                                <Text style={styles.text}>Enter</Text>
+                            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[Color.title_color, '#a69647', Color.settinText]} style={[styles.button,{borderRadius:5}]}>
+                                <Text style={[styles.text,{color : Color.settinText}]}>Enter</Text>
                             </LinearGradient>
                         </TouchableOpacity>
                     </View>
@@ -130,7 +130,7 @@ const CodeScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Color.primary,
+        backgroundColor: Color.background_black,
         alignItems: "center",
 
     },
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        color: Color.white,
+        color: Color.title_color,
         fontWeight: "bold",
         fontSize: 18,
         letterSpacing: 1
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     listItem: {
         width: 90,
         height: 50,
-        backgroundColor: Color.buttonBackground,
+        backgroundColor: Color.settinText,
         alignItems: "center",
         justifyContent: "center",
         marginHorizontal: 5,
@@ -172,11 +172,9 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     inputContainer: {
-        flex: 1,
         alignItems: "center",
-        marginTop: 40,
-
-    },
+        
+     },
     activeContent: {
         flex: 1,
         alignItems: "center",
